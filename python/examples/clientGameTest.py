@@ -18,7 +18,7 @@ def sendCommand(cmd):
     sent = sock.sendto(cmd, server_address)
     print("Command ", cmd, " sent")
     sock.close()
-    time.sleep(0.5)
+    # time.sleep(0.5)
 
 class _Getch:
     def __call__(self):
