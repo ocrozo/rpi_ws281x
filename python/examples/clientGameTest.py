@@ -9,15 +9,13 @@ import random
 hote = "localhost"
 port = 10000
 
+server_address = (hote, port)
 def sendCommand(cmd):
-    scket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    scket.connect((hote, port))
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     print "Connection on {}".format(port)
-
-    scket.send(u"(0)")
+    sent = sock.sendto(cmd, server_address)
     print("Command ", cmd, " sent")
-    #print "Close"
-    scket.close()
+    sock.close()
     time.sleep(0.5)
 
 if __name__ == '__main__':

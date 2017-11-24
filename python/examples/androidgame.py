@@ -148,15 +148,16 @@ if __name__ == '__main__':
         pair = strip.numPixels()%2 == 0
         position = initGame(strip)
         tour = 0
-        socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         server_address = ('', UDP_PORT)
-        socket.bind(server_address)
+        sock.bind(server_address)
         print("Listening on port ", str(UDP_PORT))
-        socket.listen(5)
+        # socket.listen(5)
 	while True:
-                client, address = socket.accept()
+                # client, address = socket.accept()
+                response, address = sock.recvfrom(4096)
                 print "{} connected".format( address )
-                response = client.recv(255)
+                # response = client.recv(255)
                 if response != "":
                         print(response)
                         if response == "(0)": # Reset game
@@ -171,8 +172,8 @@ if __name__ == '__main__':
                                 position = move(strip,position,1)
                         else:
                                 print("Unknown message: ",response)
-        client.close()
-        stock.close()
+        # client.close()
+        sock.close()
 
         # while True:
         #       print ('Color wipe animations.')
