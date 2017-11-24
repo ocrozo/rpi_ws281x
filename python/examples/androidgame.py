@@ -120,7 +120,7 @@ def setWinner(strip,winner):
                 colorWipe(strip,green)
         return initGame(strip)
 
-def move(strip, position,sens):
+def move(strip, position,sens,wait_ms=50):
         position=position + (sens * STEP)
         if position.is_integer:
                 strip.setPixelColor(int(position), white)
@@ -152,11 +152,10 @@ if __name__ == '__main__':
         server_address = ('', UDP_PORT)
         socket.bind(server_address)
         print("Listening on port ", str(UDP_PORT))
-        while True:
-                socket.listen(5)
+        socket.listen(5)
+	while True:
                 client, address = socket.accept()
                 print "{} connected".format( address )
-
                 response = client.recv(255)
                 if response != "":
                         print(response)
@@ -171,9 +170,7 @@ if __name__ == '__main__':
                                 print("Player 2 moved")
                                 position = move(strip,position,1)
                         else:
-                                print("Unknown message: ",response)        
-
-        
+                                print("Unknown message: ",response)
         client.close()
         stock.close()
 

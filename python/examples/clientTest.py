@@ -4,7 +4,7 @@
 import socket
 
 hote = "localhost"
-port = 15555
+port = 10000
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.connect((hote, port))
