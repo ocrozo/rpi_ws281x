@@ -123,6 +123,8 @@ def setWinner(strip,winner):
 def move(strip, position,sens,wait_ms=50):
         position=position + (sens * STEP)
         if position.is_integer:
+                for i in range(strip.numPixels()):
+                        strip.setPixelColor(i,Color(0,0,0))
                 strip.setPixelColor(int(position), white)
                 strip.setPixelColor(0, blue)
                 strip.setPixelColor(strip.numPixels()-1, green)
