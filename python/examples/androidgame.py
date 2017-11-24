@@ -96,7 +96,7 @@ def theaterChaseRainbow(strip, wait_ms=50):
 
 def initGame(strip):
         theaterChase(strip, Color(0, 0, 127)) # Blue theater chase
-        clearStrip()
+        clearStrip(strip)
         print ('Number of Pixels: ')
         print (str(strip.numPixels()))
         if strip.numPixels()%2 == 0:
