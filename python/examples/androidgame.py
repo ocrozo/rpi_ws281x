@@ -107,7 +107,7 @@ def initGame(strip):
         else:
                 strip.setPixelColor(strip.numPixels()/2, white)
         strip.show()
-        return strip.numPixels()/2.0
+        return (strip.numPixels()-1)/2.0
 
 def setWinner(strip,winner):
         if winner==0:

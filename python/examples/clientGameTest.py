@@ -20,6 +20,6 @@ def sendCommand(cmd):
 
 if __name__ == '__main__':
     sendCommand("(0)")
-    for x in range(40):
+    for x in range(60):
         sendCommand("("+str(random.randint(1,2))+")")
 
