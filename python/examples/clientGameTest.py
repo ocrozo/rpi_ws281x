@@ -35,6 +35,7 @@ def get():
         inkey = _Getch()
         while(1):
                 k=inkey()
+		print (str(k))
                 if k!='':break
         if k=='\x1b[A':
                 print "up: restart game"
