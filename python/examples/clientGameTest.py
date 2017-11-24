@@ -4,6 +4,8 @@
 import socket
 import time
 import sys
+import tty
+import termios
 import random
 
 hote = "localhost"
@@ -18,8 +20,40 @@ def sendCommand(cmd):
     sock.close()
     time.sleep(0.5)
 
+class _Getch:
+    def __call__(self):
+            fd = sys.stdin.fileno()
+            old_settings = termios.tcgetattr(fd)
+            try:
+                tty.setraw(sys.stdin.fileno())
+                ch = sys.stdin.read(3)
+            finally:
+                termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+            return ch
+
+def get():
+        inkey = _Getch()
+        while(1):
+                k=inkey()
+                if k!='':break
+        if k=='\x1b[A':
+                print "up: restart game"
+                sendCommand("("+str(0)+")")
+        elif k=='\x1b[B':
+                print "down"
+        elif k=='\x1b[C':
+                print "right: player 1 move"
+                sendCommand("("+str(1)+")")
+        elif k=='\x1b[D':
+                print "left: player 2 move"
+                sendCommand("("+str(2)+")")
+        else:
+                print "not an arrow key!"
+
+
 if __name__ == '__main__':
     sendCommand("(0)")
     for x in range(60):
-        sendCommand("("+str(random.randint(1,2))+")")
+        get()
+        # sendCommand("("+str(random.randint(1,2))+")")
 
