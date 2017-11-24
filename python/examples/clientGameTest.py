@@ -42,11 +42,11 @@ def get():
         elif k=='\x1b[B':
                 print "down"
         elif k=='\x1b[C':
-                print "right: player 1 move"
-                sendCommand("("+str(1)+")")
-        elif k=='\x1b[D':
-                print "left: player 2 move"
+                print "right: player 2 move"
                 sendCommand("("+str(2)+")")
+        elif k=='\x1b[D':
+                print "left: player 1 move"
+                sendCommand("("+str(1)+")")
         else:
                 print "not an arrow key!"
 
