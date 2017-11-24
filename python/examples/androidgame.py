@@ -111,7 +111,7 @@ def initGame(strip):
         return (strip.numPixels()-1)/2.0
 
 def setWinner(strip,winner):
-        if winner==0:
+        if winner==1:
                 colorWipe(strip,blue)
                 colorWipe(strip,blue)
                 colorWipe(strip,blue)
