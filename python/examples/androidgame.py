@@ -96,7 +96,7 @@ def theaterChaseRainbow(strip, wait_ms=50):
 
 def initGame(strip):
         theaterChase(strip, Color(0, 0, 127)) # Blue theater chase
-        
+        clearStrip()
         print ('Number of Pixels: ')
         print (str(strip.numPixels()))
         if strip.numPixels()%2 == 0:
@@ -119,12 +119,14 @@ def setWinner(strip,winner):
                 colorWipe(strip,green)
                 colorWipe(strip,green)
         return initGame(strip)
+def clearStrip(strip):
+        for i in range(strip.numPixels()):
+                strip.setPixelColor(i,Color(0,0,0))
 
 def move(strip, position,sens,wait_ms=50):
         position=position + (sens * STEP)
         if position.is_integer:
-                for i in range(strip.numPixels()):
-                        strip.setPixelColor(i,Color(0,0,0))
+                clearStrip(strip)
                 strip.setPixelColor(int(position), white)
                 strip.setPixelColor(0, blue)
                 strip.setPixelColor(strip.numPixels()-1, green)
