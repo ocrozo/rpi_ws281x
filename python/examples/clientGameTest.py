@@ -47,7 +47,7 @@ def get():
         elif k=='\x1b[D':
                 print "left: player 1 move"
                 sendCommand("("+str(1)+")")
-        elif k=='q'
+        elif k=='q':
                 print "bye bye"
                 sys.exit()
         else:
