@@ -154,6 +154,7 @@ if __name__ == '__main__':
         print("Listening on port ", str(UDP_PORT))
         # socket.listen(5)
 	while True:
+                print("Position: " + str(position))
                 # client, address = socket.accept()
                 response, address = sock.recvfrom(4096)
                 print "{} connected".format( address )
